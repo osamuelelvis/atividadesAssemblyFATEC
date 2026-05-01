@@ -1,3 +1,4 @@
+# Exercício 4: Cálculo da área do trapézio
 .data
 
 	base_maior: .asciiz "Digite o valor da base maior do trapézio: "

@@ -1,3 +1,4 @@
+# Exercício 3: Cálculo do salário final de um funcionário
 .data
 
 	hora_normal: .asciiz "\nDigite a quantidade de horas trabalhadas: "
@@ -39,6 +40,7 @@ main:
 	syscall
 	move $t2, $v0
 	# ----------------
+	# Cálculo do desconto
 	li $t3, 10
 	li $t6, 15
 	mul $t4, $t3, $t0
@@ -46,6 +48,7 @@ main:
 	add $t7, $t5, $t4
 	sub $t8, $t7, $t2
 	
+	# Print valor bruto
 	li $v0, 4
 	la $a0, total_bruto
 	syscall
@@ -54,6 +57,7 @@ main:
 	li $v0, 1
 	syscall
 	
+	# Print valor líquido
 	li $v0, 4
 	la $a0, total_liquido
 	syscall
