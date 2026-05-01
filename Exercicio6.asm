@@ -1,3 +1,4 @@
+# Exercício 6: Se A = B -> soma; senao -> multiplica
 .data
 
 	a: .asciiz "Digite um primeiro valor inteiro: "
@@ -6,35 +7,42 @@
 
 .text
 main:
-
+	# Print A
 	li $v0, 4
 	la $a0, a
 	syscall
 	
+	# Input A
 	li $v0, 5
 	syscall
 	move $t0, $v0
 	
+	# Print B
 	li $v0, 4
 	la $a0, b
 	syscall
 	
+	# Input B
 	li $v0, 5
 	syscall
 	move $t1, $v0
 	
+	# Se (A == B) Faça
 	beq $t0, $t1, se
 	j senao
 se:
-	add $t5, $t0, $t1
+	# Soma de A e B
+	add $t2, $t0, $t1
 	j fimse
 senao:
-	mul $t5, $t0, $t1
+	# Multiplicação de A e B
+	mul $t2, $t0, $t1
 fimse:
+	# Print C
 	li $v0, 4
 	la $a0, c
 	syscall
 	
-	move $a0, $t5
+	move $a0, $t2
 	li $v0, 1
 	syscall
