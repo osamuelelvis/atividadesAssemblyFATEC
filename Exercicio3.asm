@@ -3,8 +3,8 @@
 	hora_normal: .asciiz "\nDigite a quantidade de horas trabalhadas: "
 	hora_extra: .asciiz "Digite a quantidade de horas extras trabalhadas (caso houver): "
 	desconto: .asciiz "Digite o desconto a ser calculado no salário líquido: "
-	total_bruto: .asciiz "Total bruto: "
-	total_liquido: .asciiz "Total líquido: "
+	total_bruto: .asciiz "Total bruto: R$"
+	total_liquido: .asciiz "\nTotal líquido: R$"
 
 .text
 
@@ -29,16 +29,35 @@ main:
 	syscall
 	move $t1, $v0
 	# ----------------
+	# Print desconto
+	li $v0, 4
+	la $a0, desconto
+	syscall
+	
+	# Input desconto
+	li $v0, 5
+	syscall
+	move $t2, $v0
+	# ----------------
 	li $t3, 10
 	li $t6, 15
 	mul $t4, $t3, $t0
 	mul $t5, $t6, $t1
 	add $t7, $t5, $t4
+	sub $t8, $t7, $t2
 	
 	li $v0, 4
 	la $a0, total_bruto
 	syscall
 	
 	move $a0, $t7
+	li $v0, 1
+	syscall
+	
+	li $v0, 4
+	la $a0, total_liquido
+	syscall
+	
+	move $a0, $t8
 	li $v0, 1
 	syscall
