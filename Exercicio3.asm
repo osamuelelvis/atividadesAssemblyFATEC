@@ -1,7 +1,10 @@
 .data
 
-	hora_normal .asciiz "\nDigite a quantidade de horas trabalhadas: "
-	hora_extra .asciiz "Digite a quantidade de horas extras trabalhadas (caso houver): "
+	hora_normal: .asciiz "\nDigite a quantidade de horas trabalhadas: "
+	hora_extra: .asciiz "Digite a quantidade de horas extras trabalhadas (caso houver): "
+	desconto: .asciiz "Digite o desconto a ser calculado no salário líquido: "
+	total_bruto: .asciiz "Total bruto: "
+	total_liquido: .asciiz "Total líquido: "
 
 .text
 
@@ -30,3 +33,12 @@ main:
 	li $t6, 15
 	mul $t4, $t3, $t0
 	mul $t5, $t6, $t1
+	add $t7, $t5, $t4
+	
+	li $v0, 4
+	la $a0, total_bruto
+	syscall
+	
+	move $a0, $t7
+	li $v0, 1
+	syscall
