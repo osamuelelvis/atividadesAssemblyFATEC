@@ -1,0 +1,32 @@
+.data
+
+	hora_normal .asciiz "\nDigite a quantidade de horas trabalhadas: "
+	hora_extra .asciiz "Digite a quantidade de horas extras trabalhadas (caso houver): "
+
+.text
+
+main:
+	# Print hora normal
+	li $v0, 4
+	la $a0, hora_normal
+	syscall
+	
+	# Input hora normal
+	li $v0, 5
+	syscall
+	move $t0, $v0
+	# ----------------
+	# Print hora extra
+	li $v0, 4
+	la $a0, hora_extra
+	syscall
+	
+	# Input hora extra
+	li $v0, 5
+	syscall
+	move $t1, $v0
+	# ----------------
+	li $t3, 10
+	li $t6, 15
+	mul $t4, $t3, $t0
+	mul $t5, $t6, $t1
