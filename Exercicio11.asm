@@ -1,6 +1,6 @@
 .data
-	valor: .asciiz "Digite um valor entre 0 e 100: "
-	fora_intervalo: .asciiz "Valor fora do intervalo! Digite novamente: "
+	valor: .asciiz "\nDigite um valor entre 0 e 100: "
+	fora_intervalo: .asciiz "Valor fora do intervalo!"
 	intervalos_025: .asciiz "\nValores entre 0-25: "
 	intervalos_2650: .asciiz "\nValores entre 26-50: "
 	intervalos_5175: .asciiz "\nValores entre 51-75: "
