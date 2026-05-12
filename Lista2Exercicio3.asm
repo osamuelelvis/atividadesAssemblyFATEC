@@ -1,9 +1,9 @@
 .data
-	mes_nascimento: .asciiz "Digite seu mês de nascimento: "
+	mes_nascimento: .asciiz "Digite seu mÃªs de nascimento: "
 	ano_nascimento: .asciiz "Digite seu ano de nascimento: "
-	mes_atual: .asciiz "Digite o mês atual: "
+	mes_atual: .asciiz "Digite o mÃªs atual: "
 	ano_atual: .asciiz "Digite o ano atual: "
-	idade: .asciiz "Sua idade em meses é de cerca de: "
+	idade: .asciiz "Sua idade em meses Ã© de cerca de: "
 .text
 main:
 	li $v0, 4
@@ -44,8 +44,6 @@ main:
 	mul $t7, $t5, $t4
 	add $t8, $t7, $t6
 	
-	
-	# Pro final - nao faz parte ainda
 	li $v0, 4
 	la $a0, idade
 	syscall
