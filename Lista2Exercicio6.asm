@@ -23,7 +23,7 @@ main:
 	syscall
 	move $t1, $v0
 	
-	beq $t1, $t0, se_iguais
+	beq $t0, $t1, se_iguais
 	
 se_diferentes:
 	li $v0, 4
@@ -32,6 +32,43 @@ se_diferentes:
 	
 	bgt $t0, $t1, t0_maior
 	
+t1_maior:
+	li $v0, 4
+	la $a0, msg_maior
+	syscall
+	
+	move $a0, $t1
+	li $v0, 1
+	syscall
+	
+	li $v0, 4
+	la $a0, msg_menor
+	syscall
+	
+	move $a0, $t0
+	li $v0, 1
+	syscall
+	
+	j fim
+	
+t0_maior:
+	li $v0, 4
+	la $a0, msg_maior
+	syscall
+	
+	move $a0, $t0
+	li $v0, 1
+	syscall
+	
+	li $v0, 4
+	la $a0, msg_menor
+	syscall
+	
+	move $a0, $t1
+	li $v0, 1
+	syscall
+	j fim
+	
 se_iguais:
 	li $v0, 4
 	la $a0, iguais
@@ -39,3 +76,5 @@ se_iguais:
 	
 	li $v0, 10
 	syscall
+
+fim:
